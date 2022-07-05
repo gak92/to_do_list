@@ -16,7 +16,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://gak92.github.io/to_do_list/)
+[Live Demo Link](https://gak92.github.io/to_do_list/dist/)
 
 
 ## Getting Started
