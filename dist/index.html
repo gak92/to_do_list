@@ -4,9 +4,38 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/f5f70a395d.js" crossorigin="anonymous"></script>
   <title>To Do List</title>
 <script defer src="runtime.js"></script><script defer src="main.js"></script></head>
 <body>
-  <h1>To Do List</h1>
+  <main class="main">
+    <div class="heading">
+      <h1>To Do List</h1>
+      <i class="fa-solid fa-rotate"></i>
+    </div>
+    <div class="input-field">
+      <input type="text" placeholder="Add to you list">
+    </div>
+    <ul class="todo-list">
+      <li>
+        <input type="checkbox" name="check" id="check">
+        <input type="text" name="task" id="task">
+        <i class="fa-solid fa-trash-can-xmark"></i>
+      </li>
+      <li>
+        <input type="checkbox" name="check" id="check">
+        <input type="text" name="task" id="task">
+        <i class="fa-solid fa-trash-can-xmark"></i>
+      </li>
+      <li>
+        <input type="checkbox" name="check" id="check">
+        <input type="text" name="task" id="task">
+        <i class="fa-solid fa-trash-can-xmark"></i>
+      </li>
+    </ul>
+    <p class="clear-fields">
+      Clear all fields
+    </p>
+  </main>
 </body>
 </html>
