@@ -5,7 +5,6 @@ export default class UI {
     for (let i = 0; i < tasksList.length; i += 1) {
       tasksList[i].index = i + 1;
     }
-    console.log(tasksList);
   }
 
   static removeTask(target, btn, index, tasksList) {

@@ -1,6 +1,6 @@
 export default class LocalStorage {
   static getData() {
-    return (this.tasksList = JSON.parse(localStorage.getItem('taskslist')));
+    return JSON.parse(localStorage.getItem('taskslist'));
   }
 
   static saveData(tasksList) {
