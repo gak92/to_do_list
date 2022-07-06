@@ -32,7 +32,6 @@ const addNewTask = document.querySelector('#add-new-task');
 addNewTask.addEventListener('keyup', (e) => {
   if (e.keyCode === 13) {
     const newTask = addNewTask.value;
-    console.log('enter pressed');
     addTask(newTask);
     clearInput();
   }
