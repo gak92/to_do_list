@@ -11,8 +11,13 @@ if (LocalStorage.getData() === null) {
 }
 
 const addTask = (newTask) => {
-  const tasksList = LocalStorage.getData();
-  const index = tasksList.length + 1;
+  let index;
+  if (LocalStorage.getData() === null) {
+    index = 1;
+  } else {
+    const tasksList = LocalStorage.getData();
+    index = tasksList.length + 1;
+  }
   const task = new Task(newTask, false, index);
   tasksList.push(task);
   LocalStorage.saveData(tasksList);
@@ -27,6 +32,7 @@ const addNewTask = document.querySelector('#add-new-task');
 addNewTask.addEventListener('keyup', (e) => {
   if (e.keyCode === 13) {
     const newTask = addNewTask.value;
+    console.log('enter pressed');
     addTask(newTask);
     clearInput();
   }
