@@ -18,6 +18,12 @@ export default class UI {
     this.showAllTasks(tasksList);
   }
 
+  static editTask(value, index, tasksList) {
+    tasksList[index].description = value;
+    LocalStorage.saveData(tasksList);
+    this.showAllTasks(tasksList);
+  }
+
   static showAllTasks(tasksList) {
     const todoList = document.querySelector('.todo-list');
     let tasks = '';
@@ -36,6 +42,15 @@ export default class UI {
     deleteBtn.forEach((btn, index) => {
       btn.addEventListener('click', (e) => {
         this.removeTask(e.target, btn, index, tasksList);
+      });
+    });
+
+    const taskInput = document.querySelectorAll('#task');
+    taskInput.forEach((task, index) => {
+      task.addEventListener('keyup', (e) => {
+        if (e.keyCode === 13) {
+          this.editTask(task.value, index, tasksList);
+        }
       });
     });
   }
