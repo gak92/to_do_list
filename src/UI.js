@@ -1,4 +1,4 @@
-import LocalStorage from "./localstorage.js";
+import LocalStorage from './localstorage.js';
 
 export default class UI {
   static updateIndex(tasksList) {
@@ -27,7 +27,7 @@ export default class UI {
   static showAllTasks(tasksList) {
     const todoList = document.querySelector('.todo-list');
     let tasks = '';
-  
+
     tasksList.forEach((task) => {
       tasks += `<li class="todo-item">
       <input type="checkbox" name="check" id="check">
@@ -35,7 +35,7 @@ export default class UI {
       <i class="fa-solid fa-trash-can btn-delete"></i>
       </li>`;
     });
-  
+
     todoList.innerHTML = tasks;
 
     const deleteBtn = document.querySelectorAll('.btn-delete');

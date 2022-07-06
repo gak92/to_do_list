@@ -78,7 +78,7 @@ li {
 }
 
 .clear-fields {
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
   padding: 0.5rem;
   text-align: center;
@@ -90,15 +90,16 @@ li {
 
 .btn-clear {
   width: 100%;
-  background-color: transparent;
+  background-color: aliceblue;
   cursor: pointer;
   border: none;
 }
 
 .btn-clear:hover {
-  background-color: aliceblue;
+  background-color: rgb(208, 222, 235);
 }
 
-.btn-delete {
+.btn-delete,
+#btn-refresh {
   cursor: pointer;
 }

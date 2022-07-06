@@ -33,3 +33,8 @@ addNewTask.addEventListener('keyup', (e) => {
 });
 
 UI.showAllTasks(tasksList);
+
+const btnRefresh = document.querySelector('#btn-refresh');
+btnRefresh.addEventListener('click', () => {
+  window.location.reload();
+});
