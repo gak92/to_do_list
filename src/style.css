@@ -41,6 +41,7 @@ li {
   border-top: 1px solid rgb(199, 199, 199);
   border-bottom: 1px solid rgb(199, 199, 199);
   padding: 0.5rem;
+  display: flex;
 }
 
 .input-field input {
@@ -96,4 +97,8 @@ li {
 
 .btn-clear:hover {
   background-color: aliceblue;
+}
+
+.btn-delete {
+  cursor: pointer;
 }
