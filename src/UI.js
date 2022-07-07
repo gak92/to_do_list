@@ -6,14 +6,16 @@ export default class UI {
     for (let i = 0; i < tasksList.length; i += 1) {
       tasksList[i].index = i + 1;
     }
+    return tasksList;
   }
 
-  static removeTask(target, btn, index, tasksList) {
+  static removeTask(target, btn, index) {
     const currentLi = target.parentElement;
     currentLi.parentElement.removeChild(currentLi);
 
+    let tasksList = LocalStorage.getData();
     tasksList = tasksList.filter((task, idx) => idx !== index);
-    this.updateIndex(tasksList);
+    tasksList = this.updateIndex(tasksList);
     LocalStorage.saveData(tasksList);
     this.showAllTasks(tasksList);
   }
@@ -37,9 +39,18 @@ export default class UI {
     let tasks = '';
 
     tasksList.forEach((task) => {
+      let strike;
+      let checked;
+      if (task.completed === true) {
+        strike = 'strike';
+        checked = 'checked';
+      } else {
+        strike = '';
+        checked = '';
+      }
       tasks += `<li class="todo-item">
-      <input type="checkbox" name="check" id="check">
-      <input type="text" name="task" id="task" value="${task.description}" class="" reuired>
+      <input type="checkbox" name="check" id="check" ${checked}>
+      <input type="text" name="task" id="task" value="${task.description}" class="${strike}" reuired>
       <i class="fa-solid fa-trash-can btn-delete"></i>
       </li>`;
     });
@@ -49,7 +60,7 @@ export default class UI {
     const deleteBtn = document.querySelectorAll('.btn-delete');
     deleteBtn.forEach((btn, index) => {
       btn.addEventListener('click', (e) => {
-        this.removeTask(e.target, btn, index, tasksList);
+        this.removeTask(e.target, btn, index);
       });
     });
 
