@@ -12,7 +12,6 @@ export default class UI {
     const currentLi = target.parentElement;
     currentLi.parentElement.removeChild(currentLi);
 
-    console.log('Before delete: ', tasksList);
     tasksList = tasksList.filter((task, idx) => idx !== index);
     this.updateIndex(tasksList);
     LocalStorage.saveData(tasksList);
@@ -27,7 +26,6 @@ export default class UI {
 
   static reloadPage() {
     const tasksList = LocalStorage.getData();
-    console.log(tasksList);
     tasksList.forEach((task) => {
       task.completed = false;
     });
@@ -58,7 +56,7 @@ export default class UI {
     const taskInput = document.querySelectorAll('#task');
     taskInput.forEach((task, index) => {
       task.addEventListener('keyup', (e) => {
-        if ((e.keyCode === 13) & (task.value !== '')) {
+        if (e.keyCode === 13 && task.value !== '') {
           this.editTask(task.value, index, tasksList);
         }
       });

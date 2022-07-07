@@ -1,10 +1,9 @@
 import LocalStorage from './localstorage.js';
-import UI from './UI.js';
 
 export default class Status {
   static statusChanged(checkBox, index, target, tasksList) {
-    let currentLi = target.parentElement;
-    let taskDescription = currentLi.querySelector('#task');
+    const currentLi = target.parentElement;
+    const taskDescription = currentLi.querySelector('#task');
 
     if (checkBox.checked) {
       taskDescription.classList.add('strike');
@@ -19,11 +18,7 @@ export default class Status {
 
   static clearAllCompletedTask(e, tasksList) {
     tasksList = LocalStorage.getData();
-    console.log(tasksList);
-
-    tasksList = tasksList.filter((task, idx) => task.completed === false);
-    UI.updateIndex(tasksList);
+    tasksList = tasksList.filter((task) => task.completed === false);
     LocalStorage.saveData(tasksList);
-    UI.showAllTasks(tasksList);
   }
 }

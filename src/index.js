@@ -20,7 +20,6 @@ const addTask = (newTask) => {
     index = tasksList.length + 1;
   }
   const task = new Task(newTask, false, index);
-  console.log('before adding tasks List: ', tasksList);
   tasksList.push(task);
   LocalStorage.saveData(tasksList);
   UI.showAllTasks(tasksList);
@@ -49,10 +48,15 @@ btnRefresh.addEventListener('click', () => {
 
 const btnClearCompleted = document.querySelector('.btn-clear');
 btnClearCompleted.addEventListener('click', (e) => {
-  Status.clearAllCompletedTask(e);
+  Status.clearAllCompletedTask(e, tasksList);
+  tasksList = LocalStorage.getData();
+  UI.updateIndex(tasksList);
+  LocalStorage.saveData(tasksList);
+  tasksList = LocalStorage.getData();
+  UI.showAllTasks(tasksList);
 });
 
-let reloadType = window.performance.getEntriesByType('navigation')[0].type;
+const reloadType = window.performance.getEntriesByType('navigation')[0].type;
 if (reloadType === 'reload') {
   UI.reloadPage();
 }
