@@ -21,7 +21,8 @@ export default class Status {
     tasksList = LocalStorage.getData();
     console.log(tasksList);
 
-    tasksList = tasksList.filter((task, idx) => task.completed === true);
+    tasksList = tasksList.filter((task, idx) => task.completed === false);
+    UI.updateIndex(tasksList);
     LocalStorage.saveData(tasksList);
     UI.showAllTasks(tasksList);
   }

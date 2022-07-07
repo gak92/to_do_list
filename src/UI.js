@@ -15,7 +15,6 @@ export default class UI {
     console.log("Before delete: ", tasksList);
     tasksList = tasksList.filter((task, idx) => idx !== index);
     this.updateIndex(tasksList);
-    console.log("After Delete: ", tasksList);
     LocalStorage.saveData(tasksList);
     this.showAllTasks(tasksList);
   }
