@@ -1,4 +1,5 @@
 import LocalStorage from "./localstorage.js";
+import UI from "./UI.js";
 
 export default class Status {
   static statusChanged(checkBox, index, target, tasksList) {
@@ -20,7 +21,8 @@ export default class Status {
     tasksList = LocalStorage.getData();
     console.log(tasksList);
 
-    const temp = tasksList.filter((task, idx) => task.completed === true);
-    console.log(temp);
+    tasksList = tasksList.filter((task, idx) => task.completed === true);
+    LocalStorage.saveData(tasksList);
+    UI.showAllTasks(tasksList);
   }
 }

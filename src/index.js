@@ -44,15 +44,23 @@ UI.showAllTasks(tasksList);
 const btnRefresh = document.querySelector('#btn-refresh');
 btnRefresh.addEventListener('click', () => {
   window.location.reload();
-  tasksList = LocalStorage.getData();
-  console.log(tasksList);
-  tasksList.forEach((task) => {
-    task.completed = false;
-  });
-  LocalStorage.saveData(tasksList);
+  UI.reloadPage();
 });
 
 const btnClearCompleted = document.querySelector('.btn-clear');
 btnClearCompleted.addEventListener('click', (e) => {
   Status.clearAllCompletedTask(e);
 })
+
+// document.addEventListener("keydown", (e)=>{
+//   if (e.keyCode === 116) {
+//     e.preventDefault();
+//     console.log('page refreshed');
+
+//   }
+// });
+
+let reloadType = window.performance.getEntriesByType('navigation')[0].type;
+if (reloadType === 'reload') {
+  UI.reloadPage();
+}

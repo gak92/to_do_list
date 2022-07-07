@@ -26,6 +26,15 @@ export default class UI {
     this.showAllTasks(tasksList);
   }
 
+  static reloadPage() {
+    const tasksList = LocalStorage.getData();
+    console.log(tasksList);
+    tasksList.forEach((task) => {
+      task.completed = false;
+    });
+    LocalStorage.saveData(tasksList);
+  }
+
   static showAllTasks(tasksList) {
     const todoList = document.querySelector('.todo-list');
     let tasks = '';
