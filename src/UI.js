@@ -1,4 +1,5 @@
 import LocalStorage from './localstorage.js';
+import Status from './Status.js';
 
 export default class UI {
   static updateIndex(tasksList) {
@@ -32,7 +33,7 @@ export default class UI {
     tasksList.forEach((task) => {
       tasks += `<li class="todo-item">
       <input type="checkbox" name="check" id="check">
-      <input type="text" name="task" id="task" value="${task.description}" reuired>
+      <input type="text" name="task" id="task" value="${task.description}" class="" reuired>
       <i class="fa-solid fa-trash-can btn-delete"></i>
       </li>`;
     });
@@ -55,7 +56,11 @@ export default class UI {
       });
     });
 
-    const checkBox = document.querySelector('#check');
-    // checkBox.addEventListener('')
+    const checkBoxes = document.querySelectorAll('#check');
+    checkBoxes.forEach((checkBox, index) => {
+      checkBox.addEventListener('change', (e) => {
+        Status.statusChanged(checkBox, index, e.target, tasksList);
+      });
+    });
   }
 }

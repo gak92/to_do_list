@@ -44,4 +44,15 @@ UI.showAllTasks(tasksList);
 const btnRefresh = document.querySelector('#btn-refresh');
 btnRefresh.addEventListener('click', () => {
   window.location.reload();
+  tasksList = LocalStorage.getData();
+  console.log(tasksList);
+  tasksList.forEach((task) => {
+    task.completed = false;
+  });
+  LocalStorage.saveData(tasksList);
 });
+
+const btnClearCompleted = document.querySelector('.btn-clear');
+btnClearCompleted.addEventListener('click', (e) => {
+  Status.clearAllCompletedTask(e);
+})
