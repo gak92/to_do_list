@@ -11,8 +11,10 @@ export default class UI {
     const currentLi = target.parentElement;
     currentLi.parentElement.removeChild(currentLi);
 
+    console.log("Before delete: ", tasksList);
     tasksList = tasksList.filter((task, idx) => idx !== index);
     this.updateIndex(tasksList);
+    console.log("After Delete: ", tasksList);
     LocalStorage.saveData(tasksList);
     this.showAllTasks(tasksList);
   }
@@ -30,7 +32,7 @@ export default class UI {
     tasksList.forEach((task) => {
       tasks += `<li class="todo-item">
       <input type="checkbox" name="check" id="check">
-      <input type="text" name="task" id="task" value="${task.description}">
+      <input type="text" name="task" id="task" value="${task.description}" reuired>
       <i class="fa-solid fa-trash-can btn-delete"></i>
       </li>`;
     });
@@ -47,10 +49,13 @@ export default class UI {
     const taskInput = document.querySelectorAll('#task');
     taskInput.forEach((task, index) => {
       task.addEventListener('keyup', (e) => {
-        if (e.keyCode === 13) {
+        if (e.keyCode === 13 & task.value !== '') {
           this.editTask(task.value, index, tasksList);
         }
       });
     });
+
+    const checkBox = document.querySelector('#check');
+    // checkBox.addEventListener('')
   }
 }
