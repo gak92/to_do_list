@@ -18,6 +18,7 @@ body {
   flex-direction: column;
   gap: 1rem;
   box-shadow: 0 0 5px 2px rgb(199, 199, 199);
+  border-radius: 0.5rem;
 }
 
 li {
@@ -106,4 +107,8 @@ li {
 
 .strike {
   text-decoration: line-through;
+}
+
+input[type=text]:focus {
+  background-color: rgb(240, 248, 255);
 }
