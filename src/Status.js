@@ -1,5 +1,5 @@
-import LocalStorage from "./localstorage.js";
-import UI from "./UI.js";
+import LocalStorage from './localstorage.js';
+import UI from './UI.js';
 
 export default class Status {
   static statusChanged(checkBox, index, target, tasksList) {
